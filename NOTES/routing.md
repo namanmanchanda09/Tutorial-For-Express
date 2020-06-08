@@ -1,5 +1,6 @@
-## HTTP STATUS CODE
+## ROUTING IN EXPRESS
 
+### `index.js`
 ```
 const express = require('express');
 // const path = require('path');
@@ -8,21 +9,32 @@ const logger = require('./middleware/logger');
 
 const app = express();
 
+app.use('/api/members',require('./routes/api/members'))
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT,()=>console.log(`Server started on port ${PORT}`));
+```
+
+### `routes/api/members.js`
+```
+const express = require('express');
+const router = express.Router();
+const members = require('../../Members')
+
 // Gets all members
-app.get('/api/members',(req,res)=>{
+router.get('/',(req,res)=>{
     res.json(members);
 
 })
 
 // Get a single member
-app.get('/api/members/:id', (req, res)=>{
+router.get('/:id', (req, res)=>{
     if(req.params.id >3){
         res.status(400).json(
                 { message : `Member not found with id of ${req.params.id}.` }
             )  
     }else{
-
-    
 
     res.json(members.filter(
             member => member.id===parseInt(req.params.id)
@@ -30,11 +42,7 @@ app.get('/api/members/:id', (req, res)=>{
     }
 })
 
-
-
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT,()=>console.log(`Server started on port ${PORT}`));
+module.exports = router;
 ```
 
 ### At requesting *http://localhost:5000/api/members/1* the output will be
@@ -57,5 +65,8 @@ app.listen(PORT,()=>console.log(`Server started on port ${PORT}`));
     "message": "Member not found with id of 4."
 }
 ```
+
+
+
 
 

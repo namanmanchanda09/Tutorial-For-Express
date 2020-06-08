@@ -5,27 +5,9 @@ const logger = require('./middleware/logger');
 
 const app = express();
 
-// Gets all members
-app.get('/api/members',(req,res)=>{
-    res.json(members);
 
-})
 
-// Get a single member
-app.get('/api/members/:id', (req, res)=>{
-    if(req.params.id >3){
-        res.status(400).json(
-                { message : `Member not found with id of ${req.params.id}.` }
-            )  
-    }else{
-
-    
-
-    res.json(members.filter(
-            member => member.id===parseInt(req.params.id)
-        ))
-    }
-})
+app.use('/api/members',require('./routes/api/members'))
 
 
 
