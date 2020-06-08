@@ -24,7 +24,7 @@ app.listen(PORT,()=>console.log(`Server started on port ${PORT}`));
 ```
 ### Whenver a GET request is made, the output at the console is 
 
-````
+```
 Server started on port 5000
 http://localhost:5000/api/members
 ```
