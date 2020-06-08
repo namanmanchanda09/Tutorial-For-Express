@@ -1,5 +1,7 @@
 ## SETTING A STATIC FOLDER `public/`
 
+### A static folder consists of HTML templates and CSS styling to be rendered on the web page.
+
 ```
 const express = require('express');
 const path = require('path');
