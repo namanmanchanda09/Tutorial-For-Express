@@ -1,6 +1,6 @@
-## SENDING A POST REQUEST
+## SENDING A PUT REQUEST
 
-#### The model is defined in `Members.js` in the root directory. A POST request is made and a new member is added into the model.
+#### The model is defined in `Members.js` in the root directory. A PUT request is made to update the existing models.
 
 ### `Members.js`
 ```
@@ -53,7 +53,8 @@ app.listen(PORT,()=>console.log(`Server started on port ${PORT}`));
 ```
 
 ### `routes/api/members.js`
-```const express = require('express');
+```
+const express = require('express');
 const router = express.Router();
 const members = require('../../Members')
 
@@ -97,58 +98,56 @@ router.post('/',(req,res)=>{
     }
 })
 
+// PUT REQUEST ~ Updating a member 
+router.put('/:id', (req, res)=>{
+
+    const found = members.some(
+            member => member.id === parseInt(req.params.id)
+        );
+
+    if(found){
+        const updMember = req.body;
+        members.forEach(member => {
+            if(member.id === parseInt(req.params.id)){
+                member.name = updMember.name ? updMember.name : member.name;
+                member.email = updMember.email ? updMember.email : member.email;
+                res.json({msg:"member was updated",
+                member
+            });
+
+            }
+        })
+    }else{
+        res.status(400).json(
+            { message : `Member not found with id of ${req.params.id}.` }
+        )  
+
+    }
+})
+
+
 module.exports = router;
 ```
-### When a post request is made at the end pont *http://localhost:5000/api/members/* with the body
+### When a PUT request is made at the end point *http://localhost:5000/api/members/2* with the body
 ```
 {
-	"name":"Lionel Messi",
-	"email":"messi@gmail.com"
+
+	"email":"david123@gmail.com"
 }
 ```
 ### The response is 
 ```
-[
-    {
-        "id": 1,
-        "name": "Naman",
-        "email": "naman.mohan09@outlook.com",
-        "status": "active"
-    },
-    {
+{
+    "msg": "member was updated",
+    "member": {
         "id": 2,
         "name": "David",
-        "email": "david@gmail.com",
+        "email": "david123@gmail.com",
         "status": "inactive"
-    },
-    {
-        "id": 3,
-        "name": "Doug",
-        "email": "doug@gmail.com",
-        "status": "active"
-    },
-    {
-        "id": 795,
-        "name": "Lionel Messi",
-        "email": "messi@gmail.com",
-        "status": "active"
     }
-]
-```
-
-### When a post request is made at the end point *http://localhost:5000/api/members/* with the body
-```
-{
-	"name":"Lionel Messi",
 }
 ```
 
-### The response is 
-```
-{
-    "msg": "Please include email and name."
-}
-```
 
 
 
