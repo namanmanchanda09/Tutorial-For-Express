@@ -16,7 +16,7 @@
 
 8. [Routing](https://github.com/namanmanchanda09/Tutorial-For-Express/blob/master/NOTES/routing.md)
 
-9. [Post Request](https://github.com/namanmanchanda09/Tutorial-For-Express/blob/master/NOTES/post_request.md#routesapimembersjs)
+9. [Post Request](https://github.com/namanmanchanda09/Tutorial-For-Express/blob/master/NOTES/post_request.md)
 
 
 
