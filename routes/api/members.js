@@ -24,7 +24,26 @@ router.get('/:id', (req, res)=>{
     }
 })
 
+
+// POST REQUEST
+router.post('/',(req,res)=>{
+    // res.send(req.body);
+    const newMember = {
+        id:Math.floor(Math.random()*1000),
+        name:req.body.name,
+        email:req.body.email,
+        status:'active'
+    };
+    if(!newMember.email || !newMember.name){
+        res.status(400).json({msg:'Please include email and name.'})
+    }else{
+        members.push(newMember);
+        res.send(members);
+    }
+})
+
 module.exports = router;
+
 
 
 
