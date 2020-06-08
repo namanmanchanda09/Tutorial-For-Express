@@ -99,3 +99,57 @@ router.post('/',(req,res)=>{
 
 module.exports = router;
 ```
+### When a post request is made at the end pont *http://localhost:5000/api/members/* with the body
+```
+{
+	"name":"Lionel Messi",
+	"email":"messi@gmail.com"
+}
+```
+### The response is 
+```
+[
+    {
+        "id": 1,
+        "name": "Naman",
+        "email": "naman.mohan09@outlook.com",
+        "status": "active"
+    },
+    {
+        "id": 2,
+        "name": "David",
+        "email": "david@gmail.com",
+        "status": "inactive"
+    },
+    {
+        "id": 3,
+        "name": "Doug",
+        "email": "doug@gmail.com",
+        "status": "active"
+    },
+    {
+        "id": 795,
+        "name": "Lionel Messi",
+        "email": "messi@gmail.com",
+        "status": "active"
+    }
+]
+```
+
+### When a post request is made at the end pont *http://localhost:5000/api/members/* with the body
+```
+{
+	"name":"Lionel Messi",
+}
+```
+
+### The response is 
+```
+{
+    "msg": "Please include email and name."
+}
+```
+
+
+
+
