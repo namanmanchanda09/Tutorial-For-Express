@@ -18,8 +18,7 @@
 
 9. [Post Request](https://github.com/namanmanchanda09/Tutorial-For-Express/blob/master/NOTES/post_request.md)
 
-
-
+10. [Put Request](https://github.com/namanmanchanda09/Tutorial-For-Express/blob/master/NOTES/put_request.md)
 
 
 
