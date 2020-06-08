@@ -20,6 +20,9 @@
 
 10. [Put Request](https://github.com/namanmanchanda09/Tutorial-For-Express/blob/master/NOTES/put_request.md)
 
+![Screenshot 2020-06-08 at 9 32 53 PM](https://user-images.githubusercontent.com/35381035/84053498-9ddc3400-a9cf-11ea-9b5a-474e3af4d249.png)
+
+
 
 
 
