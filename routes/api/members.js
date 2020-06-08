@@ -38,7 +38,8 @@ router.post('/',(req,res)=>{
         res.status(400).json({msg:'Please include email and name.'})
     }else{
         members.push(newMember);
-        res.send(members);
+        res.redirect('/');
+        // res.send(members);
     }
 })
 
@@ -69,22 +70,25 @@ router.put('/:id', (req, res)=>{
     }
 })
 
-router.get('/:id', (req, res)=>{
-    if(req.params.id >3){
-        res.status(400).json(
-                { message : `Member not found with id of ${req.params.id}.` }
-            )  
+router.delete('/:id', (req, res)=>{
+    const found = members.some(
+        member => member.id === parseInt(req.params.id)
+    );
+    if(found){
+        res.json({msg:'Member deleted', members:members.filter(
+                member => member.id !== parseInt(req.params.id)
+            )})
+
     }else{
+        res.status(400).json(
+            { message : `Member not found with id of ${req.params.id}.` }
+        )  
 
-    
-
-    res.json(members.filter(
-            member => member.id===parseInt(req.params.id)
-        ))
     }
 })
 
 module.exports = router;
+
 
 
 
